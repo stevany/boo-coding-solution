@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "16f4cbc1-debe-4cfa-9d93-7de5400a5b85",
+		"name": "Boo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4182832"
+	},
+	"item": [
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Create Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"The response has all properties\", () => {",
+									"    //parse the response JSON and test three properties",
+									"    const responseJson = pm.response.json();",
+									"    pm.environment.set('profileId', responseJson._id)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testa\",\n    \"username\": \"test2\",\n    \"password\": \"123\",\n    \"description\": \"Adolph Larrue Martinez III.\",\n    \"mbti\": \"INFJ\",\n    \"enneagram\": \"2w3\",\n    \"variant\": \"sp/so\",\n    \"tritype\": 725,\n    \"socionics\": \"SEE\",\n    \"sloan\": \"RCOEN\",\n    \"psyche\": \"FEVL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"username\": \"test1\",\n    \"password\": \"121\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile/{{profileId}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								"{{profileId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/profile/{{profileId}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								"{{profileId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Create Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"The response has all properties\", () => {",
+									"    //parse the response JSON and test three properties",
+									"    const responseJson = pm.response.json();",
+									"    pm.environment.set('commentId', responseJson._id)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"comment\": \"test comment2\",\n   \"mbti\": \"ISTJ\",\n   \"enneagram\": \"4w3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile/{{profileId}}/comment",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								"{{profileId}}",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"comment\": \"test comment\",\n   \"mbti\": \"ISFJ\",\n   \"enneagram\": \"2w3\",\n   \"zodiac\": \"Taurus\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile/{{profileId}}/comment/{{commentId}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								"{{profileId}}",
+								"comment",
+								"{{commentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile/{{profileId}}/comment?sort=updatedAt",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								"{{profileId}}",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "updatedAt"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reaction",
+			"item": [
+				{
+					"name": "Like Reaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"like\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile/{{profileId}}/comment/{{commentId}}/react",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								"{{profileId}}",
+								"comment",
+								"{{commentId}}",
+								"react"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"The response has all properties\", () => {",
+							"    //parse the response JSON and test three properties",
+							"    const responseJson = pm.response.json();",
+							"    pm.environment.set('token', responseJson.token)",
+							"",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \n    \"username\": \"test1\",\n    \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/login/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
