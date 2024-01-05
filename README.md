@@ -1,4 +1,4 @@
-#Profile
+# Profile
 1. NodeJS installation min v16.17.1
 2. ExpressJS
 3. MongoDB in-memory
@@ -10,35 +10,38 @@
 9. Nodemon
 10. Fastest Validator for validation
 
-###Install packages
+### Install packages
 `npm i`
-###Set env
+
+### Set env
 `cp .env.example .env`
-###Running Project
+
+
+### Running Project
 ```
 npm run start
 npm run test
 ```
 
-###Import Postman Collection
+### Import Postman Collection
 `.postman`
 
-###Run test
+### Run test
 `npm run test`
 
 
-##Project Flow
-No Authorization
+## Project Flow
+### No Authorization
 1. Create Profile
 `{{BASE_URL}}/profile`
 2. Get Profile By Id -> return view
 `{{BASE_URL}}/profile/{{profileId}}`
 
 After Profile created, then login to comment and react
-Login
+### Login
 1. `{{BASE_URL}}/login/` -> user will get token
 
-Comment
+### Comment
 Using token from login
 1. Create Comment
 `{{BASE_URL}}/profile/{{profileId}}/comment`
@@ -50,7 +53,7 @@ Using token from login
 3. Update Comment
     `{{BASE_URL}}/profile/{{profileId}}/comment/{{commentId}}`
 
-React
+### React
 Like/Dislike
 Using token from login and commentId from create or get comment
 `{{BASE_URL}}/profile/{{profileId}}/comment/{{commentId}}/react`
